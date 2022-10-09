@@ -1,3 +1,6 @@
+from pyfiglet import Figlet
+
+
 class ValueInputError(Exception):
     pass
 
@@ -91,6 +94,8 @@ board_pos = {1: (0, 0),
              9: (2, 2)
              }
 size = 3
+figlet = Figlet(font='digital')
+print(figlet.renderText("Tic-Tac-Toe"))
 first_player = input('Player one name: ')
 second_player = input('Player two name: ')
 press_board = [[i, i + 1, i + 2] for i in range(1, 10, 3)]
