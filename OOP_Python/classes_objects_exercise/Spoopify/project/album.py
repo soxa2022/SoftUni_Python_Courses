@@ -1,11 +1,12 @@
-from song import Song
+from project.song import Song
 
 
 class Album:
 
     def __init__(self, name: str, *args):
         self.name = name
-        self.songs = [*args]
+        # self.songs = [*args]
+        self.songs = list(args)
         self.published = False
 
     def add_song(self, song: Song):
@@ -41,4 +42,4 @@ class Album:
     def details(self):
         result = [f"Album {self.name}"]
         [result.append(f"== {x.get_info()}") for x in self.songs]
-        return '\n'.join(result) + '\n'
+        return '\n'.join(result)
