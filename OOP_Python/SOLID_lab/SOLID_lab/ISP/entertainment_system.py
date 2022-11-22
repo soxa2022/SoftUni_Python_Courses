@@ -1,11 +1,24 @@
-class EntertainmentDevice:
-    def connect_to_device_via_hdmi_cable(self, device): pass
-    def connect_to_device_via_rca_cable(self, device): pass
-    def connect_to_device_via_ethernet_cable(self, device): pass
-    def connect_device_to_power_outlet(self, device): pass
+class HDMIConnector:
+    def connect_to_device_via_hdmi_cable(self, device):
+        pass
 
 
-class Television(EntertainmentDevice):
+class RCAConnector:
+    def connect_to_device_via_rca_cable(self, device):
+        pass
+
+
+class EthernetConnector:
+    def connect_to_device_via_ethernet_cable(self, device):
+        pass
+
+
+class PowerConnector:
+    def connect_device_to_power_outlet(self, device):
+        pass
+
+
+class Television(RCAConnector, PowerConnector, HDMIConnector):
     def connect_to_dvd(self, dvd_player):
         self.connect_to_device_via_rca_cable(dvd_player)
 
@@ -16,7 +29,7 @@ class Television(EntertainmentDevice):
         self.connect_device_to_power_outlet(self)
 
 
-class DVDPlayer(EntertainmentDevice):
+class DVDPlayer(PowerConnector, HDMIConnector):
     def connect_to_tv(self, television):
         self.connect_to_device_via_hdmi_cable(television)
 
@@ -24,7 +37,7 @@ class DVDPlayer(EntertainmentDevice):
         self.connect_device_to_power_outlet(self)
 
 
-class GameConsole(EntertainmentDevice):
+class GameConsole(PowerConnector, EthernetConnector, HDMIConnector):
     def connect_to_tv(self, television):
         self.connect_to_device_via_hdmi_cable(television)
 
@@ -35,7 +48,7 @@ class GameConsole(EntertainmentDevice):
         self.connect_device_to_power_outlet(self)
 
 
-class Router(EntertainmentDevice):
+class Router(PowerConnector, EthernetConnector):
     def connect_to_tv(self, television):
         self.connect_to_device_via_ethernet_cable(television)
 
